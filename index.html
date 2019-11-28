@@ -7,9 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gallic</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="gallic.css">
-  <link rel="stylesheet" href="gallic-theme-dark.css">
+  <link rel="stylesheet" href="dist/css/gallic.css">
+  <link rel="stylesheet" href="dist/css/gallic-theme-dark.css">
 
   <style>
     body,
@@ -23,9 +22,13 @@
 <body>
   <textarea id="editor" class="gallic"></textarea>
 
-  <script src="gallic.js"></script>
+  <script src="dist/js/gallic.js"></script>
   <script>
     const editor = new Gallic('#editor')
+
+    editor.addEventListener('selection', function (e) {
+      console.log(editor.selection.size)
+    })
   </script>
 </body>
 

@@ -1,0 +1,41 @@
+{
+  "name": "gallic",
+  "version": "1.0.0",
+  "description": "Code editor library.",
+  "main": "gallic.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantumsheep/gallic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quantumsheep/gallic/issues"
+  },
+  "homepage": "https://github.com/quantumsheep/gallic#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "highlight.js": "^9.16.2",
+    "normalize.css": "^8.0.1"
+  }
+}

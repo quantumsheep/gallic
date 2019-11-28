@@ -1,22 +1,8 @@
-const GallicPolyfill = {}
-GallicPolyfill.String = {}
+import hljs from 'highlight.js'
 
-/**
- * @param {string} str 
- * @param {number} start 
- * @param {number} count 
- * @param {string} sub 
- */
-GallicPolyfill.String.splice = (str, start, count, sub = '') => str.slice(0, start) + sub + str.slice(start + Math.abs(count))
+import Polyfills from './Polyfills'
 
-/**
- * @param {string} str 
- * @param {number} start 
- * @param {string} sub 
- */
-GallicPolyfill.String.insert = (str, index, sub = '') => GallicPolyfill.String.splice(str, index, 0, sub)
-
-class Gallic extends EventTarget {
+export default class Gallic extends EventTarget {
   static get MAIN_CLASS() { return 'gallic' }
 
   /**
@@ -58,6 +44,9 @@ class Gallic extends EventTarget {
     this.textarea.insertAdjacentElement('beforebegin', this.div)
 
     this.code = document.createElement('code')
+    this.code.classList.add('javascript')
+
+    hljs.highlightBlock(this.code)
 
     this.pre = document.createElement('pre')
     this.pre.classList.add(Gallic.MAIN_CLASS)
@@ -86,11 +75,11 @@ class Gallic extends EventTarget {
             insert += pair[1]
           }
 
-          this.textarea.value = GallicPolyfill.String.insert(this.textarea.value, start, insert)
+          this.textarea.value = Polyfills.String.insert(this.textarea.value, start, insert)
           this.textarea.setSelectionRange(start + 1, end + 1)
         } else {
-          this.textarea.value = GallicPolyfill.String.insert(this.textarea.value, start, pair[0])
-          this.textarea.value = GallicPolyfill.String.insert(this.textarea.value, end + 1, pair[1])
+          this.textarea.value = Polyfills.String.insert(this.textarea.value, start, pair[0])
+          this.textarea.value = Polyfills.String.insert(this.textarea.value, end + 1, pair[1])
           this.textarea.setSelectionRange(start + 1, end + 1, this.textarea.selectionDirection)
         }
 
@@ -112,6 +101,8 @@ class Gallic extends EventTarget {
   update() {
     this.code.innerText = this.textarea.value
     this.update_selection()
+
+    hljs.highlightBlock(this.code)
 
     this.dispatchEvent(new Event('input'));
   }
