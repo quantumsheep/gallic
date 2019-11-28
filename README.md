@@ -1,2 +1,2 @@
-# gallic
-JS code editor library
+# Gallic
+Code editor library.
