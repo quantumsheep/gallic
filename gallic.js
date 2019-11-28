@@ -16,7 +16,7 @@ GallicPolyfill.String.splice = (str, start, count, sub = '') => str.slice(0, sta
  */
 GallicPolyfill.String.insert = (str, index, sub = '') => GallicPolyfill.String.splice(str, index, 0, sub)
 
-class Gallic {
+class Gallic extends EventTarget {
   static get MAIN_CLASS() { return 'gallic' }
 
   /**
@@ -43,6 +43,8 @@ class Gallic {
    * @param {HTMLTextAreaElement | string} target 
    */
   constructor(target) {
+    super()
+
     /** @type {HTMLTextAreaElement} */
     this.textarea = (typeof target === 'string') ? document.querySelector(target) : target
 
@@ -91,9 +93,9 @@ class Gallic {
           this.textarea.value = GallicPolyfill.String.insert(this.textarea.value, end + 1, pair[1])
           this.textarea.setSelectionRange(start + 1, end + 1, this.textarea.selectionDirection)
         }
-      }
 
-      this.update()
+        this.update()
+      }
     })
 
     this.textarea.addEventListener('input', (e) => {
@@ -103,9 +105,25 @@ class Gallic {
     this.textarea.addEventListener('scroll', (e) => {
       this.code.scrollTo(this.textarea.scrollLeft, this.textarea.scrollTop)
     })
+
+    this.textarea.addEventListener('select', () => this.update_selection())
   }
 
   update() {
     this.code.innerText = this.textarea.value
+    this.update_selection()
+
+    this.dispatchEvent(new Event('input'));
+  }
+
+  update_selection() {
+    this.selection = {
+      start: this.textarea.selectionStart,
+      end: this.textarea.selectionEnd,
+      direction: this.textarea.selectionDirection,
+      size: this.textarea.selectionEnd - this.textarea.selectionStart,
+    }
+
+    this.dispatchEvent(new Event('selection'));
   }
 }
