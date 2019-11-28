@@ -1,0 +1,49 @@
+.gallic * {
+  box-sizing: border-box;
+}
+
+div.gallic {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+textarea.gallic,
+pre.gallic {
+  padding: 0;
+  padding-left: 20px;
+}
+
+textarea.gallic {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  color: transparent;
+  background: none;
+
+  border: 0;
+  resize: none;
+  word-wrap: normal;
+}
+
+pre.gallic,
+pre.gallic code {
+  overflow: hidden;
+}
+
+pre.gallic {
+  height: 100%;
+  width: 100%;
+
+  margin: 0;
+}
+
+pre.gallic code {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
