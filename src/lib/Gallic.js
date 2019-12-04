@@ -44,7 +44,7 @@ export default class Gallic extends EventTarget {
     this.textarea.insertAdjacentElement('beforebegin', this.div)
 
     this.code = document.createElement('code')
-    this.code.classList.add('javascript')
+    this.code.classList.add('tex')
 
     hljs.highlightBlock(this.code)
 
