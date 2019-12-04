@@ -14,6 +14,6 @@ Polyfills.String.splice = (str, start, count, sub = '') => str.slice(0, start) +
  * @param {number} start 
  * @param {string} sub 
  */
-Polyfills.String.insert = (str, index, sub = '') => GallicPolyfill.String.splice(str, index, 0, sub)
+Polyfills.String.insert = (str, index, sub = '') => Polyfills.String.splice(str, index, 0, sub)
 
 export default Polyfills
