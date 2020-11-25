@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "highlight.js": "^9.16.2",
+    "highlight.js": "^10.1.2",
     "normalize.css": "^8.0.1"
   }
 }
